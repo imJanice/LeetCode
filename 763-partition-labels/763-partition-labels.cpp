@@ -10,7 +10,6 @@ public:
         vector<char> ext;
         vector<struct Dict> place;
         struct Dict tmp;
-        int index;
         int ptr, start;
         for(int i=0;i<s.size();i++){
             auto ptr = find(ext.begin(), ext.end(), s[i]);
@@ -22,8 +21,7 @@ public:
                 place.push_back(tmp);
             }else{
                 // already exist
-                index = ptr - ext.begin();
-                place[index].last = i;
+                place[ptr-ext.begin()].last = i;
             }
         }
         ptr = place[0].last;
