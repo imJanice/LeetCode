@@ -6,15 +6,10 @@ public:
         int ans = 0;
         sort(people.begin(), people.end());
         while(left < right){
-            if(people[right] == limit){
-                right--;
-            }else if(people[left] + people[right] > limit){
-                right--;
-            }else{
-                // people[left] + people[right] < limit
-                right--;
+            if(people[left] + people[right] <= limit){
                 left++;
             }
+            right--;
             ans++;
             if(left == right){
                 ans++;
