@@ -11,7 +11,7 @@ public:
             }else if(people[l] + people[r] > limit){
                 r--;
             }else{
-                // people[left] + people[right] < limit
+                // people[left] + people[right] <= limit
                 r--;
                 l++;
             }
