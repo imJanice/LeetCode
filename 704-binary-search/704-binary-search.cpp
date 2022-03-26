@@ -1,22 +1,20 @@
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        int ans = -1;
-        int s = 0, e = nums.size() - 1;
-        int mid;
-        while(e >= s){
-            mid = (e - s) / 2 + s;
-            cout << s << " "<< e<<endl;
-            cout << mid << endl;
-            if(target > nums[mid]){
-                s = mid + 1;
-            }else if(target < nums[mid]){
-                e = mid - 1;
-            }else{
-                ans = mid;
-                break;
-            }
+    int biSearch(int s, int e, int tg, vector<int>& nums){
+        if(s > e){
+            return -1;
         }
-        return ans;
+        
+        int mid = (e - s) / 2 + s;
+        if(tg > nums[mid]){
+            return biSearch(mid + 1, e, tg, nums);
+        }else if(tg < nums[mid]){
+            return biSearch(s, mid - 1, tg, nums);
+        }else{
+            return mid;
+        }
+    }
+    int search(vector<int>& nums, int target) {
+        return biSearch(0, nums.size() - 1, target, nums);
     }
 };
