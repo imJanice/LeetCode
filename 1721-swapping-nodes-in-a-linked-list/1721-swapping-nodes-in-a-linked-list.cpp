@@ -12,18 +12,19 @@ class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
         vector<ListNode *> address;
+        vector<int> num;
         ListNode* ptr = head;
         int tmp;
         int swap_st = k - 1;
         int swap_ed;
         while(ptr != nullptr){
             address.push_back(ptr);
+            num.push_back(ptr->val);
             ptr = ptr->next;
         }
         swap_ed = address.size() - k;
-        tmp = address[swap_st]->val;
-        address[swap_st]->val = address[swap_ed]->val;
-        address[swap_ed]->val = tmp;
+        address[swap_st]->val = num[swap_ed];
+        address[swap_ed]->val = num[swap_st];
         
         return head;
     }
