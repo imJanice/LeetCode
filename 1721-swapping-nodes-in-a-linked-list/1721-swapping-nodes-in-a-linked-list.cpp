@@ -14,13 +14,16 @@ public:
         vector<ListNode *> address;
         ListNode* ptr = head;
         int tmp;
+        int swap_st = k - 1;
+        int swap_ed;
         while(ptr != nullptr){
             address.push_back(ptr);
             ptr = ptr->next;
         }
-        tmp = address[k - 1]->val;
-        address[k - 1]->val = address[address.size() - k]->val;
-        address[address.size() - k]->val = tmp;
+        swap_ed = address.size() - k;
+        tmp = address[swap_st]->val;
+        address[swap_st]->val = address[swap_ed]->val;
+        address[swap_ed]->val = tmp;
         
         return head;
     }
