@@ -22,6 +22,7 @@ public:
         if(root->left != 0){
             reverse(root->left);
         }
+        // this is the key part
         if(!ans){
             ans = new TreeNode(root->val); 
             tmp = ans;
@@ -29,6 +30,7 @@ public:
             tmp->right = new TreeNode(root->val);
             tmp = tmp->right;
         }
+        
         if(ans == NULL){
             ans = root;
         }
