@@ -1,34 +1,30 @@
 class UndergroundSystem {
 public:
-    struct travelRecord{
-        string start;
-        int time;
-    }travel[1000001];
-    map<pair<string, string>, pair<double, double>> m;
-    UndergroundSystem() {
-        
-    }
+    map<int, pair<string, int>> r;
+    map<pair<string, string>, pair<int, int>> m;
+    
+    UndergroundSystem() {}
     
     void checkIn(int id, string stationName, int t) {
-        travel[id].start = stationName; 
-        travel[id].time = t;
+        r[id].first = stationName; 
+        r[id].second = t;
     }
     
     void checkOut(int id, string stationName, int t) {
-        if(m.find(pair(travel[id].start, stationName)) == m.end()){
+        if(m.find(pair(r[id].first, stationName)) == m.end()){
             // not found
-            pair<string, string> key = make_pair(travel[id].start, stationName);
-            pair<int, int> val = make_pair(1, t - travel[id].time);
+            pair<string, string> key = make_pair(r[id].first, stationName);
+            pair<int, int> val = make_pair(1, t - r[id].second);
             m.insert({key, val});
         }else{
             // found
-            m[{travel[id].start, stationName}].first++;
-            m[{travel[id].start, stationName}].second += t - travel[id].time;
+            m[{r[id].first, stationName}].first++;
+            m[{r[id].first, stationName}].second += t - r[id].second;
         }
     }
     
     double getAverageTime(string startStation, string endStation) {
-        return m[{startStation, endStation}].second / m[{startStation, endStation}].first;
+        return (double)m[{startStation, endStation}].second / (double)m[{startStation, endStation}].first;
     }
 };
 
