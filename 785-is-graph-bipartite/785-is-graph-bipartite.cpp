@@ -1,5 +1,8 @@
 class Solution {
 public:
+    // Visit all nodes and recursively
+    // for each node, add the node to set A, while adding its connections to another set B
+    // In the end check to see if the two sets overlap. If they do return false, otherwise return true.
     bool isBipartite(vector<vector<int>>& graph) {
         set<int> A = {0};
         set<int> B;
