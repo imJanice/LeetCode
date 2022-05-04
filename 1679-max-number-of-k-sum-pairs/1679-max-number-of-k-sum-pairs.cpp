@@ -3,9 +3,12 @@ public:
     int maxOperations(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         int ed = nums.size()-1;
-        int i=0;
         int ans = 0;
-        while(i < ed){
+        for(int i=0;i<nums.size();){
+            if(i >= ed){
+                break;
+            }
+            
             if(nums[i] + nums[ed] == k){
                 i++;
                 ed--;
