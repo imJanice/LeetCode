@@ -4,7 +4,7 @@ public:
         int i = 0, j = numbers.size()-1;
         int sum = 0;
         vector<int> ans;
-        while(i<j){
+        while(1){
             sum = numbers[i]+numbers[j];
             if(sum == target){
                 ans.push_back(i+1);
