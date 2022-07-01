@@ -1,6 +1,6 @@
 class Solution {
 public:
-    static bool compare( vector<int> a, vector<int> b) {
+    static bool compare(vector<int> &a, vector<int> &b) {
         return a.back() > b.back();
     }
     int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
